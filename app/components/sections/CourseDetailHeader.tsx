@@ -38,7 +38,7 @@ export const CourseDetailHeader: React.FC<CourseDetailHeaderProps> = ({
       </div>
 
       {/* Banner image */}
-      <div className="rounded-xl overflow-hidden mb-8 h-[200px]">
+      <div className="rounded-xl overflow-hidden mb-8 h-[278px]">
         <img
           src={course.image}
           alt={course.title}

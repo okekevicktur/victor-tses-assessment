@@ -123,7 +123,7 @@ export default function CourseLearnPage() {
 
           {/* Video banner — shows for regular lessons, hides for quiz */}
           {!isQuizActive && (
-            <div className="relative rounded-xl overflow-hidden mb-6 h-[280px] bg-gray-800">
+            <div className="relative rounded-xl overflow-hidden mb-6 h-[450px] bg-gray-800">
               <img
                 src={course.image}
                 alt={course.title}
