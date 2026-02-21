@@ -190,10 +190,10 @@ const mockLessonSections: LessonSection[] = [
     id: "s1",
     title: "Introduction",
     lessons: [
-      { id: "l1", title: "Welcome Message", completed: false, active: true },
-      { id: "l2", title: "A Note on Style", completed: false },
-      { id: "l3", title: "What You'll Learn", completed: false },
-      { id: "l4", title: "Meet Your Instructor", completed: false },
+      { id: "l1", title: "Welcome Message", completed: true, active: true },
+      { id: "l2", title: "A Note on Style", completed: true },
+      { id: "l3", title: "What You'll Learn", completed: true },
+      { id: "l4", title: "Meet Your Instructor", completed: true },
     ],
   },
   {
@@ -222,7 +222,7 @@ const mockLessonSections: LessonSection[] = [
   },
   {
     id: "s5",
-    title: "Getting Started",
+    title: "Assessment",
     lessons: [
       { id: "l11", title: "Your First Exercise", completed: false },
       { id: "l12", title: "Community Guidelines", completed: false },
