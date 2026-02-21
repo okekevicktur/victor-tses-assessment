@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Play } from "lucide-react";
 import {
   useGetCourseByIdQuery,
   useGetCourseLessonsQuery,
+  type LessonSection,
 } from "@/app/store/api/apiSlice";
 import { Sidebar } from "@/app/components/common/Sidebar";
 import { TopBar } from "@/app/components/common/TopBar";
@@ -24,15 +25,40 @@ export default function CourseLearnPage() {
     useGetCourseLessonsQuery(courseId);
 
   const [activeLessonId, setActiveLessonId] = useState("l1");
+  const [completedLessonIds, setCompletedLessonIds] = useState<Set<string>>(
+    new Set(),
+  );
 
-  // Count totals
-  const totalLessons =
-    sections?.reduce((sum, s) => sum + s.lessons.length, 0) || 0;
-  const completedLessons =
-    sections?.reduce(
-      (sum, s) => sum + s.lessons.filter((l) => l.completed).length,
-      0,
-    ) || 0;
+  // Mark the active lesson as complete
+  const handleMarkComplete = useCallback(() => {
+    setCompletedLessonIds((prev) => {
+      const next = new Set(prev);
+      next.add(activeLessonId);
+      return next;
+    });
+  }, [activeLessonId]);
+
+  // Merge local completion state into sections for the sidebar
+  const mergedSections: LessonSection[] = useMemo(() => {
+    if (!sections) return [];
+    return sections.map((section) => ({
+      ...section,
+      lessons: section.lessons.map((lesson) => ({
+        ...lesson,
+        completed: lesson.completed || completedLessonIds.has(lesson.id),
+      })),
+    }));
+  }, [sections, completedLessonIds]);
+
+  // Count totals from merged state
+  const totalLessons = mergedSections.reduce(
+    (sum, s) => sum + s.lessons.length,
+    0,
+  );
+  const completedLessons = mergedSections.reduce(
+    (sum, s) => sum + s.lessons.filter((l) => l.completed).length,
+    0,
+  );
 
   // Determine if the active lesson is a quiz
   const isQuizActive = useMemo(() => {
@@ -43,6 +69,9 @@ export default function CourseLearnPage() {
     }
     return false;
   }, [sections, activeLessonId]);
+
+  // Check if active lesson is already completed
+  const isActiveLessonCompleted = completedLessonIds.has(activeLessonId);
 
   if (courseLoading || lessonsLoading) {
     return (
@@ -108,24 +137,27 @@ export default function CourseLearnPage() {
             </div>
           )}
 
+          {/* Content area */}
           <div className="flex gap-6">
             {/* Left: lesson or quiz content */}
             {isQuizActive ? (
               <QuizContent className="flex-1 min-w-0" />
             ) : (
-              <LessonContent className="flex-1 min-w-0" />
+              <LessonContent
+                className="flex-1 min-w-0"
+                onMarkComplete={handleMarkComplete}
+                isCompleted={isActiveLessonCompleted}
+              />
             )}
 
             {/* Right: lesson sidebar */}
-            {sections && (
-              <LessonSidebar
-                sections={sections}
-                completedCount={completedLessons}
-                totalCount={totalLessons}
-                activeLessonId={activeLessonId}
-                onLessonClick={setActiveLessonId}
-              />
-            )}
+            <LessonSidebar
+              sections={mergedSections}
+              completedCount={completedLessons}
+              totalCount={totalLessons}
+              activeLessonId={activeLessonId}
+              onLessonClick={setActiveLessonId}
+            />
           </div>
         </main>
       </div>

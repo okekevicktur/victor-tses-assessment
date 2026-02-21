@@ -47,6 +47,9 @@ export const LessonSidebar: React.FC<LessonSidebarProps> = ({
       <div className="max-h-[600px] overflow-y-auto">
         {sections.map((section) => {
           const isExpanded = expandedSections.includes(section.id);
+          const allCompleted =
+            section.lessons.length > 0 &&
+            section.lessons.every((l) => l.completed);
 
           return (
             <div key={section.id} className="border-b border-gray-50">
@@ -58,11 +61,16 @@ export const LessonSidebar: React.FC<LessonSidebarProps> = ({
                 <span className="text-sm font-semibold text-gray-900">
                   {section.title}
                 </span>
-                {isExpanded ? (
-                  <ChevronUp className="w-4 h-4 text-gray-400" />
-                ) : (
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
-                )}
+                <div className="flex items-center gap-2">
+                  {!isExpanded && allCompleted && (
+                    <CheckCircle2 className="w-4 h-4 text-green-500" />
+                  )}
+                  {isExpanded ? (
+                    <ChevronUp className="w-4 h-4 text-gray-400" />
+                  ) : (
+                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                  )}
+                </div>
               </button>
 
               {/* Lessons */}

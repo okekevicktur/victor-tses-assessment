@@ -5,9 +5,15 @@ import { Button } from "../ui/Button";
 
 interface LessonContentProps {
   className?: string;
+  onMarkComplete?: () => void;
+  isCompleted?: boolean;
 }
 
-export const LessonContent: React.FC<LessonContentProps> = ({ className }) => {
+export const LessonContent: React.FC<LessonContentProps> = ({
+  className,
+  onMarkComplete,
+  isCompleted,
+}) => {
   const [activeTab, setActiveTab] = useState<"content" | "reviews">("content");
 
   return (
@@ -172,9 +178,21 @@ export const LessonContent: React.FC<LessonContentProps> = ({ className }) => {
 
           {/* Mark as complete button */}
           <div className="flex justify-center mt-8">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-sm font-semibold">
-              Mark as complete
-            </Button>
+            {isCompleted ? (
+              <Button
+                className="bg-green-600 text-white px-8 py-3 rounded-lg text-sm font-semibold cursor-default opacity-80"
+                disabled
+              >
+                Completed ✓
+              </Button>
+            ) : (
+              <Button
+                onClick={onMarkComplete}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-sm font-semibold"
+              >
+                Mark as complete
+              </Button>
+            )}
           </div>
         </div>
       ) : (

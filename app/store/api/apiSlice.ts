@@ -191,34 +191,34 @@ const mockLessonSections: LessonSection[] = [
     id: "s1",
     title: "Introduction",
     lessons: [
-      { id: "l1", title: "Welcome Message", completed: true, active: true },
-      { id: "l2", title: "A Note on Style", completed: true },
-      { id: "l3", title: "What You'll Learn", completed: true },
-      { id: "l4", title: "Meet Your Instructor", completed: true },
+      { id: "l1", title: "Welcome Message", completed: false, active: true },
+      { id: "l2", title: "A Note on Style", completed: false },
+      { id: "l3", title: "What You'll Learn", completed: false },
+      { id: "l4", title: "Meet Your Instructor", completed: false },
     ],
   },
   {
     id: "s2",
     title: "Setting Up Your Workspace",
     lessons: [
-      { id: "l5", title: "Tools You Need", completed: true },
-      { id: "l6", title: "Environment Setup", completed: true },
+      { id: "l5", title: "Tools You Need", completed: false },
+      { id: "l6", title: "Environment Setup", completed: false },
     ],
   },
   {
     id: "s3",
     title: "Navigating the Course",
     lessons: [
-      { id: "l7", title: "Course Structure", completed: true },
-      { id: "l8", title: "How to Submit Assignments", completed: true },
+      { id: "l7", title: "Course Structure", completed: false },
+      { id: "l8", title: "How to Submit Assignments", completed: false },
     ],
   },
   {
     id: "s4",
     title: "Course Resources",
     lessons: [
-      { id: "l9", title: "Supplementary Materials", completed: true },
-      { id: "l10", title: "Recommended Reading", completed: true },
+      { id: "l9", title: "Supplementary Materials", completed: false },
+      { id: "l10", title: "Recommended Reading", completed: false },
     ],
   },
   {
