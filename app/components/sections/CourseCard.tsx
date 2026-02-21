@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Badge } from "../ui/Badge";
 import type { Course } from "@/app/types";
+import Image from "next/image";
 
 interface CourseCardProps {
   course: Course;
@@ -10,13 +11,15 @@ interface CourseCardProps {
 export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
   return (
     <Link href={`/courses/${course.id}`} className="block">
-      <div className="bg-white rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
+      <div className="bg-[#F8F8F8] rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
         {/* Image */}
-        <div className="relative h-[180px] overflow-hidden">
-          <img
+        <div className="relative h-[128px] overflow-hidden">
+          <Image
             src={course.image}
             alt={course.title}
+            fill
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            priority
           />
         </div>
 

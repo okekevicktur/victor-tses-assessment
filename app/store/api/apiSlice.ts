@@ -12,7 +12,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze workplace scenarios, and develop strategies for clear messaging.",
     category: "Soft Skill",
-    image: "https://picsum.photos/seed/workplace/400/250",
+    image: "/images/course1.png",
     duration: "6 weeks",
     instructor: "Dr. Sarah Johnson",
     level: "Beginner",
@@ -23,7 +23,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze interpersonal dynamics, and build stronger professional relationships.",
     category: "Compliance & Policy",
-    image: "https://picsum.photos/seed/interpersonal/400/250",
+    image: "/images/course2.png",
     duration: "8 weeks",
     instructor: "Prof. Michael Chen",
     level: "Intermediate",
@@ -34,7 +34,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze team dynamics, and develop cohesion-building strategies.",
     category: "Soft Skill",
-    image: "https://picsum.photos/seed/cohesion/400/250",
+    image: "/images/course3.png",
     duration: "4 weeks",
     instructor: "Engr. David Okafor",
     level: "Beginner",
@@ -45,7 +45,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze dialogue patterns, and improve facilitation skills.",
     category: "Digital Skills",
-    image: "https://picsum.photos/seed/dialogue/400/250",
+    image: "/images/course4.png",
     duration: "5 weeks",
     instructor: "Dr. Amina Bakare",
     level: "Intermediate",
@@ -56,7 +56,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze group behavior, and optimize collaborative outcomes.",
     category: "Business & Strategy",
-    image: "https://picsum.photos/seed/dynamics/400/250",
+    image: "/images/course5.png",
     duration: "7 weeks",
     instructor: "Prof. Jane Doe",
     level: "Advanced",
@@ -67,7 +67,7 @@ const mockCourses: Course[] = [
     description:
       "Upon completion of this module, participants will: Implement practical communication techniques, analyze organizational culture, and promote transparency.",
     category: "Onboarding",
-    image: "https://picsum.photos/seed/opencomm/400/250",
+    image: "/images/course6.png",
     duration: "3 weeks",
     instructor: "Dr. Richard Lee",
     level: "Beginner",

@@ -6,7 +6,7 @@ import {
   useGetCourseByIdQuery,
   useGetCourseLearnersQuery,
 } from "@/app/store/api/apiSlice";
-import { Users, UserCheck } from "lucide-react";
+import { Users, UserCheck, GraduationCap } from "lucide-react";
 import { Sidebar } from "@/app/components/common/Sidebar";
 import { TopBar } from "@/app/components/common/TopBar";
 import { StatCard } from "@/app/components/ui/StatCard";
@@ -50,7 +50,7 @@ export default function CourseDetailPage() {
 
   if (!course) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex min-h-screen bg-[#F6F7F6]">
         <Sidebar />
         <div className="flex-1 ml-[220px]">
           <TopBar />
@@ -63,7 +63,7 @@ export default function CourseDetailPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#F6F7F6]">
       <Sidebar />
       <div className="flex-1 ml-[220px]">
         <TopBar />
@@ -72,25 +72,30 @@ export default function CourseDetailPage() {
           <CourseDetailHeader course={course} onBack={() => router.push("/")} />
 
           {/* Stats row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
             <StatCard
               icon={Users}
-              iconColor="text-blue-600"
-              iconBg="bg-blue-50"
+              iconColor="text-[#5F9009]"
+              iconBg="bg-[linear-gradient(to_bottom,#BEFDD9,#D4FEB4,#CBFAC2)]"
               label="Total Applicants"
               value={1223}
             />
             <StatCard
-              icon={UserCheck}
-              iconColor="text-green-600"
-              iconBg="bg-green-50"
+              icon={GraduationCap}
+              iconColor="text-[#2CCDF1]"
+              iconBg="bg-[linear-gradient(to_bottom,#CFF4FC,#CFF5FC,#BBF0FA,#D2F6FE)]"
               label="Active Learners"
               value={13}
             />
           </div>
 
-          {/* Learner table */}
-          <LearnerTable learners={learners || []} isLoading={learnersLoading} />
+          <div className="bg-[#FDFDFD] rounded-xl ">
+            {/* Learner table */}
+            <LearnerTable
+              learners={learners || []}
+              isLoading={learnersLoading}
+            />
+        
 
           {/* Pagination */}
           <Pagination
@@ -99,7 +104,7 @@ export default function CourseDetailPage() {
             pageSize={pageSize}
             onPageChange={setCurrentPage}
             onPageSizeChange={setPageSize}
-          />
+          />  </div>
         </main>
       </div>
     </div>

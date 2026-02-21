@@ -26,13 +26,13 @@ export const CourseFilters: React.FC<CourseFiltersProps> = ({
       {/* Filters */}
       <div className="flex items-center gap-3">
         {/* Date filter */}
-        <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+        <button className="flex items-center gap-2 px-5 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-4xl hover:bg-gray-50 transition-colors">
           <span>Date</span>
           <Calendar className="w-4 h-4" />
         </button>
 
         {/* Category filter */}
-        <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+        <button className="flex items-center gap-2 px-5 py-2.5 text-sm text-gray-600 bg-white border border-gray-200 rounded-4xl hover:bg-gray-50 transition-colors">
           <span>Category</span>
           <ChevronDown className="w-4 h-4" />
         </button>

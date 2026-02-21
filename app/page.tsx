@@ -22,7 +22,7 @@ export default function Home() {
     ) || [];
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-[#F6F7F6]">
       {/* Sidebar */}
       <Sidebar />
 
@@ -35,10 +35,10 @@ export default function Home() {
         <main className="px-8 py-6">
           {/* Page Header */}
           <div className="mb-6">
-            <h1 className="text-2xl font-bold text-gray-900 mb-1">
+            <h1 className="text-2xl font-medium text-[#202020] mb-1">
               Course Management
             </h1>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-[#636363]">
               Create, organize, and assign courses to teams and individuals
             </p>
           </div>
@@ -46,23 +46,25 @@ export default function Home() {
           {/* Stats */}
           <StatsSection />
 
-          {/* Filters */}
-          <CourseFilters
-            searchValue={searchValue}
-            onSearchChange={setSearchValue}
-          />
+          <div className="bg-white rounded-xl p-5">
+            {/* Filters */}
+            <CourseFilters
+              searchValue={searchValue}
+              onSearchChange={setSearchValue}
+            />
 
-          {/* Course Grid */}
-          <CourseGrid courses={filteredCourses} isLoading={isLoading} />
+            {/* Course Grid */}
+            <CourseGrid courses={filteredCourses} isLoading={isLoading} />
 
-          {/* Pagination */}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={24}
-            pageSize={pageSize}
-            onPageChange={setCurrentPage}
-            onPageSizeChange={setPageSize}
-          />
+            {/* Pagination */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={24}
+              pageSize={pageSize}
+              onPageChange={setCurrentPage}
+              onPageSizeChange={setPageSize}
+            />
+          </div>
         </main>
       </div>
     </div>

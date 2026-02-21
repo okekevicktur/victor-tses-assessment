@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, MessageSquareText } from "lucide-react";
 import { Avatar } from "../ui/Avatar";
 import type { Learner } from "@/app/types";
 
@@ -28,7 +28,7 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
   }
 
   return (
-    <div className="bg-white rounded-xl border border-gray-100 overflow-hidden">
+    <div className="bg-[#FDFDFD] rounded-xl border border-gray-100 overflow-hidden">
       <table className="w-full">
         <thead>
           <tr className="border-b border-gray-100">
@@ -50,7 +50,7 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
           {learners.map((learner) => (
             <tr
               key={learner.id}
-              className="border-b border-gray-50 hover:bg-gray-50 transition-colors"
+              className="border-b last:border-b-0 border-gray-50 hover:bg-gray-50 transition-colors"
             >
               <td className="px-6 py-3.5">
                 <div className="flex items-center gap-3">
@@ -66,9 +66,9 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
               <td className="px-6 py-3.5">
                 <span className="text-sm text-gray-600">{learner.email}</span>
               </td>
-              <td className="px-6 py-3.5 text-right">
+              <td className="pr-13 py-3.5 text-right">
                 <button className="text-gray-400 hover:text-blue-600 transition-colors">
-                  <MessageCircle className="w-5 h-5" />
+                  <MessageSquareText  className="w-5 h-5" />
                 </button>
               </td>
             </tr>

@@ -12,10 +12,10 @@ interface TopBarProps {
 export const TopBar: React.FC<TopBarProps> = ({ className }) => {
   return (
     <header
-      className={`flex items-center justify-between py-4 px-6 bg-white border-b border-gray-100 sticky top-0 z-20 ${className || ""}`}
+      className={`flex items-center justify-between py-3.5 px-6 bg-white border-b border-gray-100 sticky top-0 z-20 ${className || ""}`}
     >
       {/* Search */}
-      <SearchInput placeholder="Search soludesk" className="w-[320px]" />
+      <SearchInput placeholder="Search soludesk" className="w-[373px]" />
 
       {/* Right section */}
       <div className="flex items-center gap-5">
