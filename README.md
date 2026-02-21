@@ -21,6 +21,7 @@ This project demonstrates a responsive frontend application built with modern we
 
 ## Getting Started
 
+```
 src/
 ├── app/
 │ ├── store/
@@ -38,6 +39,7 @@ src/
 ├── hooks/ # Custom hooks
 ├── types/ # TypeScript type definitions
 └── utils/ # Utility functions
+```
 
 ## Setup Instructions
 
