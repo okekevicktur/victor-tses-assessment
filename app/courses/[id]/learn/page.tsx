@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, Play } from "lucide-react";
 import {
@@ -11,6 +11,7 @@ import { Sidebar } from "@/app/components/common/Sidebar";
 import { TopBar } from "@/app/components/common/TopBar";
 import { LessonSidebar } from "@/app/components/sections/LessonSidebar";
 import { LessonContent } from "@/app/components/sections/LessonContent";
+import { QuizContent } from "@/app/components/sections/QuizContent";
 
 export default function CourseLearnPage() {
   const params = useParams();
@@ -32,6 +33,16 @@ export default function CourseLearnPage() {
       (sum, s) => sum + s.lessons.filter((l) => l.completed).length,
       0,
     ) || 0;
+
+  // Determine if the active lesson is a quiz
+  const isQuizActive = useMemo(() => {
+    if (!sections) return false;
+    for (const section of sections) {
+      const lesson = section.lessons.find((l) => l.id === activeLessonId);
+      if (lesson) return lesson.type === "quiz";
+    }
+    return false;
+  }, [sections, activeLessonId]);
 
   if (courseLoading || lessonsLoading) {
     return (
@@ -81,25 +92,31 @@ export default function CourseLearnPage() {
             <h1 className="text-xl font-bold text-gray-900">{course.title}</h1>
           </div>
 
-          {/* Video banner */}
-          <div className="relative rounded-xl overflow-hidden mb-6 h-[280px] bg-gray-800">
-            <img
-              src={course.image}
-              alt={course.title}
-              className="w-full h-full object-cover opacity-80"
-            />
-            {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
-                <Play className="w-6 h-6 text-gray-800 ml-1" />
-              </button>
+          {/* Video banner — only show for regular lessons, not quiz */}
+          {!isQuizActive && (
+            <div className="relative rounded-xl overflow-hidden mb-6 h-[280px] bg-gray-800">
+              <img
+                src={course.image}
+                alt={course.title}
+                className="w-full h-full object-cover opacity-80"
+              />
+              {/* Play button overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
+                  <Play className="w-6 h-6 text-gray-800 ml-1" />
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
-          {/* Content area: lesson content + sidebar */}
+          {/* Content area: lesson/quiz content + sidebar */}
           <div className="flex gap-6">
-            {/* Left: lesson content */}
-            <LessonContent className="flex-1 min-w-0" />
+            {/* Left: lesson or quiz content */}
+            {isQuizActive ? (
+              <QuizContent className="flex-1 min-w-0" />
+            ) : (
+              <LessonContent className="flex-1 min-w-0" />
+            )}
 
             {/* Right: lesson sidebar */}
             {sections && (

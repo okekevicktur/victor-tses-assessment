@@ -25,6 +25,7 @@ export interface Lesson {
   title: string;
   completed: boolean;
   active?: boolean;
+  type?: "lesson" | "quiz";
 }
 
 export interface LessonSection {
@@ -200,33 +201,30 @@ const mockLessonSections: LessonSection[] = [
     id: "s2",
     title: "Setting Up Your Workspace",
     lessons: [
-      { id: "l5", title: "Tools You Need", completed: false },
-      { id: "l6", title: "Environment Setup", completed: false },
+      { id: "l5", title: "Tools You Need", completed: true },
+      { id: "l6", title: "Environment Setup", completed: true },
     ],
   },
   {
     id: "s3",
     title: "Navigating the Course",
     lessons: [
-      { id: "l7", title: "Course Structure", completed: false },
-      { id: "l8", title: "How to Submit Assignments", completed: false },
+      { id: "l7", title: "Course Structure", completed: true },
+      { id: "l8", title: "How to Submit Assignments", completed: true },
     ],
   },
   {
     id: "s4",
     title: "Course Resources",
     lessons: [
-      { id: "l9", title: "Supplementary Materials", completed: false },
-      { id: "l10", title: "Recommended Reading", completed: false },
+      { id: "l9", title: "Supplementary Materials", completed: true },
+      { id: "l10", title: "Recommended Reading", completed: true },
     ],
   },
   {
     id: "s5",
     title: "Assessment",
-    lessons: [
-      { id: "l11", title: "Your First Exercise", completed: false },
-      { id: "l12", title: "Community Guidelines", completed: false },
-    ],
+    lessons: [{ id: "l11", title: "Quiz", completed: false, type: "quiz" }],
   },
 ];
 
