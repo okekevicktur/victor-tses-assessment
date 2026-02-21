@@ -6,8 +6,8 @@ import { ArrowLeft, Play } from "lucide-react";
 import {
   useGetCourseByIdQuery,
   useGetCourseLessonsQuery,
-  type LessonSection,
 } from "@/app/store/api/apiSlice";
+import type { LessonSection } from "@/app/types";
 import { Sidebar } from "@/app/components/common/Sidebar";
 import { TopBar } from "@/app/components/common/TopBar";
 import { LessonSidebar } from "@/app/components/sections/LessonSidebar";

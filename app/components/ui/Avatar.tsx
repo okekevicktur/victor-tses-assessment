@@ -23,7 +23,7 @@ export const Avatar: React.FC<AvatarProps> = ({
   return (
     <div
       className={twMerge(
-        "rounded-full overflow-hidden bg-gray-200 flex-shrink-0",
+        "rounded-full overflow-hidden bg-gray-200 shrink-0",
         sizes[size],
         className,
       )}

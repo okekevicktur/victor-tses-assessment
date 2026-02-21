@@ -1,6 +1,6 @@
 import React from "react";
 import { CourseCard } from "./CourseCard";
-import type { Course } from "@/app/store/api/apiSlice";
+import type { Course } from "@/app/types";
 
 interface CourseGridProps {
   courses: Course[];

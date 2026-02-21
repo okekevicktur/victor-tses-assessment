@@ -17,7 +17,7 @@ export default function AssessmentsPage() {
               Assessments
             </h1>
             <p className="text-gray-500 text-sm">
-              Coming soon — your assessments and results will appear here.
+              Coming soon - your assessments and results will appear here.
             </p>
           </div>
         </main>

@@ -15,7 +15,7 @@ export default function DashboardPage() {
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Dashboard</h1>
             <p className="text-gray-500 text-sm">
-              Coming soon — your learning overview will appear here.
+              Coming soon - your learning overview will appear here.
             </p>
           </div>
         </main>

@@ -15,7 +15,7 @@ export default function SettingsPage() {
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Settings</h1>
             <p className="text-gray-500 text-sm">
-              Coming soon — account and app settings will appear here.
+              Coming soon - account and app settings will appear here.
             </p>
           </div>
         </main>

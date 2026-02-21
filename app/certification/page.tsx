@@ -17,7 +17,7 @@ export default function CertificationPage() {
               My Certification
             </h1>
             <p className="text-gray-500 text-sm">
-              Coming soon — your certificates and achievements will appear here.
+              Coming soon - your certificates and achievements will appear here.
             </p>
           </div>
         </main>

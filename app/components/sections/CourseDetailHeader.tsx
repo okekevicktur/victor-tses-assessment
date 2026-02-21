@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "../ui/Badge";
-import type { Course } from "@/app/store/api/apiSlice";
+import type { Course } from "@/app/types";
 
 interface CourseDetailHeaderProps {
   course: Course;

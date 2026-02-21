@@ -15,7 +15,7 @@ export default function ClassesPage() {
             </div>
             <h1 className="text-2xl font-bold text-gray-900 mb-2">Classes</h1>
             <p className="text-gray-500 text-sm">
-              Coming soon — your enrolled classes will appear here.
+              Coming soon - your enrolled classes will appear here.
             </p>
           </div>
         </main>

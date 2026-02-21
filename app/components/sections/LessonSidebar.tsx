@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronDown, ChevronUp, Loader2, CheckCircle2 } from "lucide-react";
-import type { LessonSection } from "@/app/store/api/apiSlice";
+import type { LessonSection } from "@/app/types";
 
 interface LessonSidebarProps {
   sections: LessonSection[];

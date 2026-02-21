@@ -1,47 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import type { Course, Learner, Lesson, LessonSection, User } from "@/app/types";
 
-// Types co-located with data
-export interface Course {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  image: string;
-  duration: string;
-  instructor: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
-}
-
-export interface Learner {
-  id: string;
-  name: string;
-  city: string;
-  email: string;
-  avatar: string;
-}
-
-export interface Lesson {
-  id: string;
-  title: string;
-  completed: boolean;
-  active?: boolean;
-  type?: "lesson" | "quiz";
-}
-
-export interface LessonSection {
-  id: string;
-  title: string;
-  lessons: Lesson[];
-}
-
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  username: string;
-  phone: string;
-  website: string;
-}
+// Re-export types for backward compatibility
+export type { Course, Learner, Lesson, LessonSection, User };
 
 // Mock data matching the Figma design
 const mockCourses: Course[] = [

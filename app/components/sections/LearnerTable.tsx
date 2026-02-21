@@ -1,7 +1,7 @@
 import React from "react";
 import { MessageCircle } from "lucide-react";
 import { Avatar } from "../ui/Avatar";
-import type { Learner } from "@/app/store/api/apiSlice";
+import type { Learner } from "@/app/types";
 
 interface LearnerTableProps {
   learners: Learner[];
