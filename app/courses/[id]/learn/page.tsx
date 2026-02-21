@@ -92,7 +92,7 @@ export default function CourseLearnPage() {
             <h1 className="text-xl font-bold text-gray-900">{course.title}</h1>
           </div>
 
-          {/* Video banner — only show for regular lessons, not quiz */}
+          {/* Video banner — shows for regular lessons, hides for quiz */}
           {!isQuizActive && (
             <div className="relative rounded-xl overflow-hidden mb-6 h-[280px] bg-gray-800">
               <img
@@ -100,7 +100,6 @@ export default function CourseLearnPage() {
                 alt={course.title}
                 className="w-full h-full object-cover opacity-80"
               />
-              {/* Play button overlay */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
                   <Play className="w-6 h-6 text-gray-800 ml-1" />
@@ -109,7 +108,6 @@ export default function CourseLearnPage() {
             </div>
           )}
 
-          {/* Content area: lesson/quiz content + sidebar */}
           <div className="flex gap-6">
             {/* Left: lesson or quiz content */}
             {isQuizActive ? (
