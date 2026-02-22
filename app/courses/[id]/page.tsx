@@ -6,9 +6,8 @@ import {
   useGetCourseByIdQuery,
   useGetCourseLearnersQuery,
 } from "@/app/store/api/apiSlice";
-import { Users, UserCheck, GraduationCap } from "lucide-react";
-import { Sidebar } from "@/app/components/common/Sidebar";
-import { TopBar } from "@/app/components/common/TopBar";
+import { Users, GraduationCap } from "lucide-react";
+import { PageShell } from "@/app/components/common/PageShell";
 import { StatCard } from "@/app/components/ui/StatCard";
 import { Pagination } from "@/app/components/ui/Pagination";
 import { CourseDetailHeader } from "@/app/components/sections/CourseDetailHeader";
@@ -29,83 +28,62 @@ export default function CourseDetailPage() {
 
   if (courseLoading) {
     return (
-      <div className="flex min-h-screen w-full bg-gray-50">
-        <Sidebar />
-        <div className="flex-1 min-w-0">
-          <TopBar />
-          <main className="px-4 sm:px-8 py-4 sm:py-6">
-            <div className="animate-pulse space-y-6">
-              <div className="h-8 bg-gray-200 rounded w-1/3" />
-              <div className="h-[200px] bg-gray-200 rounded-xl" />
-              <div className="grid grid-cols-2 gap-4">
-                <div className="h-24 bg-gray-200 rounded-xl" />
-                <div className="h-24 bg-gray-200 rounded-xl" />
-              </div>
-            </div>
-          </main>
+      <PageShell>
+        <div className="animate-pulse space-y-6">
+          <div className="h-8 bg-gray-200 rounded w-1/3" />
+          <div className="h-[200px] bg-gray-200 rounded-xl" />
+          <div className="grid grid-cols-2 gap-4">
+            <div className="h-24 bg-gray-200 rounded-xl" />
+            <div className="h-24 bg-gray-200 rounded-xl" />
+          </div>
         </div>
-      </div>
+      </PageShell>
     );
   }
 
   if (!course) {
     return (
-      <div className="flex min-h-screen w-full bg-[#F6F7F6]">
-        <Sidebar />
-        <div className="flex-1 min-w-0">
-          <TopBar />
-          <main className="px-4 sm:px-8 py-4 sm:py-6">
-            <p className="text-gray-500">Course not found.</p>
-          </main>
-        </div>
-      </div>
+      <PageShell>
+        <p className="text-gray-500">Course not found.</p>
+      </PageShell>
     );
   }
 
   return (
-    <div className="flex min-h-screen w-full overflow-hidden bg-[#F6F7F6]">
-      <Sidebar />
-      <div className="flex-1 min-w-0">
-        <TopBar />
-        <main className="px-4 sm:px-8 py-4 sm:py-6">
-          {/* Header with back button, title, badge, CTA, and banner */}
-          <CourseDetailHeader course={course} onBack={() => router.push("/")} />
+    <PageShell>
+      {/* Header with back button, title, badge, CTA, and banner */}
+      <CourseDetailHeader course={course} onBack={() => router.push("/")} />
 
-          {/* Stats row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-            <StatCard
-              icon={Users}
-              iconColor="text-[#5F9009]"
-              iconBg="bg-[linear-gradient(to_bottom,#BEFDD9,#D4FEB4,#CBFAC2)]"
-              label="Total Applicants"
-              value={1223}
-            />
-            <StatCard
-              icon={GraduationCap}
-              iconColor="text-[#2CCDF1]"
-              iconBg="bg-[linear-gradient(to_bottom,#CFF4FC,#CFF5FC,#BBF0FA,#D2F6FE)]"
-              label="Active Learners"
-              value={13}
-            />
-          </div>
-
-          <div className="bg-[#FDFDFD] rounded-xl ">
-            {/* Learner table */}
-            <LearnerTable
-              learners={learners || []}
-              isLoading={learnersLoading}
-            />
-            {/* Pagination */}
-            <Pagination
-              currentPage={currentPage}
-              totalPages={24}
-              pageSize={pageSize}
-              onPageChange={setCurrentPage}
-              onPageSizeChange={setPageSize}
-            />{" "}
-          </div>
-        </main>
+      {/* Stats row */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
+        <StatCard
+          icon={Users}
+          iconColor="text-[#5F9009]"
+          iconBg="bg-[linear-gradient(to_bottom,#BEFDD9,#D4FEB4,#CBFAC2)]"
+          label="Total Applicants"
+          value={1223}
+        />
+        <StatCard
+          icon={GraduationCap}
+          iconColor="text-[#2CCDF1]"
+          iconBg="bg-[linear-gradient(to_bottom,#CFF4FC,#CFF5FC,#BBF0FA,#D2F6FE)]"
+          label="Active Learners"
+          value={13}
+        />
       </div>
-    </div>
+
+      <div className="bg-[#FDFDFD] rounded-xl ">
+        {/* Learner table */}
+        <LearnerTable learners={learners || []} isLoading={learnersLoading} />
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          totalPages={24}
+          pageSize={pageSize}
+          onPageChange={setCurrentPage}
+          onPageSizeChange={setPageSize}
+        />{" "}
+      </div>
+    </PageShell>
   );
 }

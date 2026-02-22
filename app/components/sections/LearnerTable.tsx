@@ -1,16 +1,19 @@
 import React from "react";
 import { MessageCircle, MessageSquareText } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 import { Avatar } from "../ui/Avatar";
 import type { Learner } from "@/app/types";
 
 interface LearnerTableProps {
   learners: Learner[];
   isLoading?: boolean;
+  className?: string;
 }
 
 export const LearnerTable: React.FC<LearnerTableProps> = ({
   learners,
   isLoading,
+  className,
 }) => {
   if (isLoading) {
     return (
@@ -28,7 +31,12 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
   }
 
   return (
-    <div className="bg-[#FDFDFD] rounded-xl border border-gray-100 overflow-hidden">
+    <div
+      className={twMerge(
+        "bg-[#FDFDFD] rounded-xl border border-gray-100 overflow-hidden",
+        className,
+      )}
+    >
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>

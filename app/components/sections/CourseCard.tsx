@@ -1,16 +1,24 @@
 import React from "react";
 import Link from "next/link";
+import { twMerge } from "tailwind-merge";
 import { Badge } from "../ui/Badge";
 import type { Course } from "@/app/types";
 import Image from "next/image";
 
 interface CourseCardProps {
   course: Course;
+  className?: string;
 }
 
-export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
+export const CourseCard: React.FC<CourseCardProps> = ({
+  course,
+  className,
+}) => {
   return (
-    <Link href={`/courses/${course.id}`} className="block">
+    <Link
+      href={`/courses/${course.id}`}
+      className={twMerge("block", className)}
+    >
       <div className="bg-[#F8F8F8] rounded-xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
         {/* Image */}
         <div className="relative h-[128px] overflow-hidden">

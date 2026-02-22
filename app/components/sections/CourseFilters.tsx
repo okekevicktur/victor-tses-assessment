@@ -2,25 +2,33 @@
 
 import React from "react";
 import { Calendar, ChevronDown } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 import { SearchInput } from "../ui/SearchInput";
 
 interface CourseFiltersProps {
   searchValue?: string;
   onSearchChange?: (value: string) => void;
+  className?: string;
 }
 
 export const CourseFilters: React.FC<CourseFiltersProps> = ({
   searchValue,
   onSearchChange,
+  className,
 }) => {
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+    <div
+      className={twMerge(
+        "flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6",
+        className,
+      )}
+    >
       {/* Search */}
       <SearchInput
         placeholder="Search Course"
         value={searchValue}
         onChange={(e) => onSearchChange?.(e.target.value)}
-        className="w-full sm:w-[400px]"
+        className="w-full sm:w-[400px] lg:w-[681px]"
       />
 
       {/* Filters */}

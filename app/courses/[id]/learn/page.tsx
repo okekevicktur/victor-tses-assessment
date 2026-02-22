@@ -8,8 +8,7 @@ import {
   useGetCourseLessonsQuery,
 } from "@/app/store/api/apiSlice";
 import type { LessonSection } from "@/app/types";
-import { Sidebar } from "@/app/components/common/Sidebar";
-import { TopBar } from "@/app/components/common/TopBar";
+import { PageShell } from "@/app/components/common/PageShell";
 import { LessonSidebar } from "@/app/components/sections/LessonSidebar";
 import { LessonContent } from "@/app/components/sections/LessonContent";
 import { QuizContent } from "@/app/components/sections/QuizContent";
@@ -78,97 +77,79 @@ export default function CourseLearnPage() {
 
   if (courseLoading || lessonsLoading) {
     return (
-      <div className="flex min-h-screen w-full bg-gray-50">
-        <Sidebar />
-        <div className="flex-1 min-w-0">
-          <TopBar />
-          <main className="px-4 sm:px-8 py-4 sm:py-6">
-            <div className="animate-pulse space-y-6">
-              <div className="h-8 bg-gray-200 rounded w-1/3" />
-              <div className="h-[300px] bg-gray-200 rounded-xl" />
-            </div>
-          </main>
+      <PageShell className="bg-gray-50">
+        <div className="animate-pulse space-y-6">
+          <div className="h-8 bg-gray-200 rounded w-1/3" />
+          <div className="h-[300px] bg-gray-200 rounded-xl" />
         </div>
-      </div>
+      </PageShell>
     );
   }
 
   if (!course) {
     return (
-      <div className="flex min-h-screen w-full bg-gray-50">
-        <Sidebar />
-        <div className="flex-1 min-w-0">
-          <TopBar />
-          <main className="px-4 sm:px-8 py-4 sm:py-6">
-            <p className="text-gray-500">Course not found.</p>
-          </main>
-        </div>
-      </div>
+      <PageShell className="bg-gray-50">
+        <p className="text-gray-500">Course not found.</p>
+      </PageShell>
     );
   }
 
   return (
-    <div className="flex min-h-screen w-full bg-gray-50">
-      <Sidebar />
-      <div className="flex-1 min-w-0">
-        <TopBar />
-        <main className="px-4 sm:px-8 py-4 sm:py-6">
-          {/* Header */}
-          <div className="flex items-center gap-4 mb-4 sm:mb-6">
-            <button
-              onClick={() => router.push(`/courses/${courseId}`)}
-              className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[36px] w-[36px] sm:h-[44px] sm:w-[44px] flex items-center justify-center transition-colors"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </button>
-            <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
-              {course.title}
-            </h1>
-          </div>
-          <div className="flex flex-col lg:flex-row gap-6">
-            <div className="flex-1 min-w-0">
-              {/* Video banner — shows for regular lessons, hides for quiz */}
-              {!isQuizActive && (
-                <div className="relative rounded-xl overflow-hidden mb-4 sm:mb-6 h-[200px] sm:h-[350px] lg:h-[450px] bg-gray-800">
-                  <img
-                    src={activeLessonImage || course.image}
-                    alt={activeLesson?.title || course.title}
-                    className="w-full h-full object-cover opacity-80"
-                  />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
-                      <Play className="w-6 h-6 text-gray-800 ml-1" />
-                    </button>
-                  </div>
-                </div>
-              )}
-
-              {/* Content area */}
-              <div className="flex gap-6">
-                {/* Left: lesson or quiz content */}
-                {isQuizActive ? (
-                  <QuizContent className="flex-1 min-w-0" />
-                ) : (
-                  <LessonContent
-                    className="flex-1 min-w-0"
-                    onMarkComplete={handleMarkComplete}
-                    isCompleted={isActiveLessonCompleted}
-                  />
-                )}
+    <PageShell className="bg-gray-50">
+      {/* Header */}
+      <div className="flex items-center gap-4 mb-4 sm:mb-6">
+        <button
+          onClick={() => router.push(`/courses/${courseId}`)}
+          className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[36px] w-[36px] sm:h-[44px] sm:w-[44px] flex items-center justify-center transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </button>
+        <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+          {course.title}
+        </h1>
+      </div>
+      <div className="flex flex-col lg:flex-row gap-6">
+        <div className="flex-1 min-w-0">
+          {/* Video banner — shows for regular lessons, hides for quiz */}
+          {!isQuizActive && (
+            <div className="relative rounded-xl overflow-hidden mb-4 sm:mb-6 h-[200px] sm:h-[350px] lg:h-[450px] bg-gray-800">
+              <img
+                src={activeLessonImage || course.image}
+                alt={activeLesson?.title || course.title}
+                className="w-full h-full object-cover opacity-80"
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
+                  <Play className="w-6 h-6 text-gray-800 ml-1" />
+                </button>
               </div>
             </div>
-            {/* Right: lesson sidebar */}
-            <LessonSidebar
-              className="self-start w-full lg:w-[300px]"
-              sections={mergedSections}
-              completedCount={completedLessons}
-              totalCount={totalLessons}
-              activeLessonId={activeLessonId}
-              onLessonClick={setActiveLessonId}
-            />
+          )}
+
+          {/* Content area */}
+          <div className="flex gap-6">
+            {/* Left: lesson or quiz content */}
+            {isQuizActive ? (
+              <QuizContent className="flex-1 min-w-0" />
+            ) : (
+              <LessonContent
+                className="flex-1 min-w-0"
+                onMarkComplete={handleMarkComplete}
+                isCompleted={isActiveLessonCompleted}
+              />
+            )}
           </div>
-        </main>
+        </div>
+        {/* Right: lesson sidebar */}
+        <LessonSidebar
+          className="self-start w-full lg:w-[300px]"
+          sections={mergedSections}
+          completedCount={completedLessons}
+          totalCount={totalLessons}
+          activeLessonId={activeLessonId}
+          onLessonClick={setActiveLessonId}
+        />
       </div>
-    </div>
+    </PageShell>
   );
 }

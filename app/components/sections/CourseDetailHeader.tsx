@@ -7,14 +7,16 @@ import type { Course } from "@/app/types";
 interface CourseDetailHeaderProps {
   course: Course;
   onBack: () => void;
+  className?: string;
 }
 
 export const CourseDetailHeader: React.FC<CourseDetailHeaderProps> = ({
   course,
   onBack,
+  className,
 }) => {
   return (
-    <div>
+    <div className={className}>
       {/* Title row */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 sm:mb-6">
         <div className="flex items-center gap-3">

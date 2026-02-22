@@ -1,19 +1,27 @@
 import React from "react";
+import { twMerge } from "tailwind-merge";
 import { CourseCard } from "./CourseCard";
 import type { Course } from "@/app/types";
 
 interface CourseGridProps {
   courses: Course[];
   isLoading?: boolean;
+  className?: string;
 }
 
 export const CourseGrid: React.FC<CourseGridProps> = ({
   courses,
   isLoading,
+  className,
 }) => {
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        className={twMerge(
+          "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+          className,
+        )}
+      >
         {Array.from({ length: 6 }).map((_, i) => (
           <div
             key={i}
@@ -33,7 +41,12 @@ export const CourseGrid: React.FC<CourseGridProps> = ({
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      className={twMerge(
+        "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6",
+        className,
+      )}
+    >
       {courses.map((course) => (
         <CourseCard key={course.id} course={course} />
       ))}

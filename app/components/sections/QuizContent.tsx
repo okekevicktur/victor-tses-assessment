@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { Tabs } from "../ui/Tabs";
 import { Button } from "../ui/Button";
 import { AwardIcon } from "lucide-react";
 
@@ -12,8 +13,13 @@ interface QuizAnswer {
   [questionId: number]: string;
 }
 
+const TABS = [
+  { label: "Course Content", value: "content" },
+  { label: "Review/Feedbacks", value: "reviews" },
+];
+
 export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
-  const [activeTab, setActiveTab] = useState<"content" | "reviews">("content");
+  const [activeTab, setActiveTab] = useState("content");
   const [answers, setAnswers] = useState<QuizAnswer>({});
 
   const handleSelect = (questionId: number, option: string) => {
@@ -90,34 +96,7 @@ export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
   return (
     <div className={className}>
       {/* Tabs */}
-      <div className="flex gap-6 border-b border-gray-200 mb-6">
-        <button
-          onClick={() => setActiveTab("content")}
-          className={`pb-3 cursor-pointer px-5 text-sm font-medium transition-colors relative ${
-            activeTab === "content"
-              ? "text-blue-600"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-        >
-          Course Content
-          {activeTab === "content" && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full" />
-          )}
-        </button>
-        <button
-          onClick={() => setActiveTab("reviews")}
-          className={`pb-3 cursor-pointer  text-sm font-medium transition-colors relative ${
-            activeTab === "reviews"
-              ? "text-blue-600 px-2"
-              : "text-gray-500 hover:text-gray-700"
-          }`}
-        >
-          Review/Feedbacks
-          {activeTab === "reviews" && (
-            <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-600 rounded-full" />
-          )}
-        </button>
-      </div>
+      <Tabs tabs={TABS} activeTab={activeTab} onTabChange={setActiveTab} />
 
       {/* Quiz content */}
       {activeTab === "content" ? (
