@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/store/store";
 import { ArrowLeft, Play } from "lucide-react";
 import {
   useGetCourseByIdQuery,
@@ -17,6 +19,16 @@ export default function CourseLearnPage() {
   const params = useParams();
   const router = useRouter();
   const courseId = params.id as string;
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.user.isAuthenticated,
+  );
+
+  // Redirect to course page if not authenticated
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.replace(`/courses/${courseId}`);
+    }
+  }, [isAuthenticated, courseId, router]);
 
   const { data: course, isLoading: courseLoading } =
     useGetCourseByIdQuery(courseId);
