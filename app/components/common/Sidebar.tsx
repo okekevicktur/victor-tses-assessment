@@ -73,14 +73,18 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
         {/* Close button — only on mobile */}
         <button
           onClick={() => setMobileOpen(false)}
+          aria-label="Close menu"
           className="ml-auto lg:hidden p-1 text-gray-500 hover:text-gray-700"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 pt-6 border-r border-[#F0F0F0]">
+      <nav
+        aria-label="Main navigation"
+        className="flex-1 px-3 pt-6 border-r border-[#F0F0F0]"
+      >
         <ul className="space-y-5">
           {navItems.map((item) => {
             const active = isActive(item.href);
@@ -88,6 +92,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
               <li key={item.label}>
                 <a
                   href={item.href}
+                  aria-current={active ? "page" : undefined}
                   className={twMerge(
                     "flex items-center gap-3 px-3 py-2.5 text-sm font-medium transition-colors",
                     active
@@ -95,7 +100,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                       : "text-[#636363] hover:bg-gray-50 hover:text-gray-900",
                   )}
                 >
-                  <item.icon className="w-5 h-5 shrink-0" />
+                  <item.icon className="w-5 h-5 shrink-0" aria-hidden="true" />
                   <span>{item.label}</span>
                 </a>
               </li>

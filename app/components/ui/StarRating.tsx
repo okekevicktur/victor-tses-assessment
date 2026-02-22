@@ -26,13 +26,20 @@ export const StarRating: React.FC<StarRatingProps> = ({
   className,
 }) => {
   return (
-    <div className={twMerge("flex items-center gap-0.5", className)}>
+    <div
+      role="group"
+      aria-label={
+        interactive ? "Rate this item" : `Rating: ${rating} out of ${max} stars`
+      }
+      className={twMerge("flex items-center gap-0.5", className)}
+    >
       {Array.from({ length: max }, (_, i) => i + 1).map((star) => {
         const isFilled = star <= rating;
 
         const starElement = (
           <svg
             key={star}
+            aria-hidden="true"
             className={twMerge(
               sizes[size],
               isFilled ? "text-yellow-400" : "text-gray-200",
@@ -51,6 +58,7 @@ export const StarRating: React.FC<StarRatingProps> = ({
               key={star}
               type="button"
               onClick={() => onRate?.(star)}
+              aria-label={`Rate ${star} of ${max} stars`}
               className="cursor-pointer"
             >
               {starElement}

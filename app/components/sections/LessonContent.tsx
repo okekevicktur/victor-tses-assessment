@@ -252,7 +252,11 @@ export const LessonContent: React.FC<LessonContentProps> = ({
               Leave a Review
             </h4>
             <StarRating rating={0} size="md" interactive className="mb-4" />
+            <label htmlFor="review-textarea" className="sr-only">
+              Your review
+            </label>
             <textarea
+              id="review-textarea"
               placeholder="Share your experience with this course..."
               className="w-full p-4 text-sm text-gray-700 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               rows={4}

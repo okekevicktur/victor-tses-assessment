@@ -37,19 +37,26 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 p-4">
+    <nav
+      aria-label="Pagination"
+      className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 p-4"
+    >
       {/* Page size selector */}
       <div className="relative">
         <select
           value={pageSize}
           onChange={(e) => onPageSizeChange?.(Number(e.target.value))}
+          aria-label="Results per page"
           className="appearance-none pl-5 pr-8 py-2 text-sm text-gray-600 bg-white border border-[#E8E8E8] rounded-4xl focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
         >
           <option value={10}>Show 10/page</option>
           <option value={20}>Show 20/page</option>
           <option value={50}>Show 50/page</option>
         </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+        <ChevronDown
+          className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          aria-hidden="true"
+        />
       </div>
 
       {/* Page numbers */}
@@ -57,6 +64,7 @@ export const Pagination: React.FC<PaginationProps> = ({
         <button
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
+          aria-label="Go to previous page"
           className=" py-1.5 text-sm font-semibold disabled:font-medium text-blue-600 hover:bg-blue-50 rounded-lg disabled:text-[#8C8C8C] disabled:hover:bg-transparent transition-colors"
         >
           Prev
@@ -66,6 +74,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           page === "..." ? (
             <span
               key={`ellipsis-${idx}`}
+              aria-hidden="true"
               className="px-2 p-2 justify-center text-sm border border-[#0A60E1] w-8 h-8  flex items-end   text-blue-600 font-semibold rounded-full"
             >
               ...
@@ -74,6 +83,8 @@ export const Pagination: React.FC<PaginationProps> = ({
             <button
               key={page}
               onClick={() => onPageChange(page as number)}
+              aria-label={`Page ${page}`}
+              aria-current={currentPage === page ? "page" : undefined}
               className={twMerge(
                 "w-8 h-8 text-sm rounded-full transition-colors",
                 currentPage === page
@@ -89,11 +100,12 @@ export const Pagination: React.FC<PaginationProps> = ({
         <button
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
+          aria-label="Go to next page"
           className="pr-3 py-1.5 text-sm text-blue-600 font-semibold hover:bg-blue-50 rounded-lg disabled:text-[#8C8C8C] disabled:hover:bg-transparent transition-colors"
         >
           Next
         </button>
       </div>
-    </div>
+    </nav>
   );
 };

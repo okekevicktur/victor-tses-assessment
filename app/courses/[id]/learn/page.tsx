@@ -100,9 +100,10 @@ export default function CourseLearnPage() {
       <div className="flex items-center gap-4 mb-4 sm:mb-6">
         <button
           onClick={() => router.push(`/courses/${courseId}`)}
+          aria-label="Back to course details"
           className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[36px] w-[36px] sm:h-[44px] sm:w-[44px] flex items-center justify-center transition-colors"
         >
-          <ArrowLeft className="w-5 h-5" />
+          <ArrowLeft className="w-5 h-5" aria-hidden="true" />
         </button>
         <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
           {course.title}
@@ -119,8 +120,14 @@ export default function CourseLearnPage() {
                 className="w-full h-full object-cover opacity-80"
               />
               <div className="absolute inset-0 flex items-center justify-center">
-                <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
-                  <Play className="w-6 h-6 text-gray-800 ml-1" />
+                <button
+                  aria-label="Play video"
+                  className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105"
+                >
+                  <Play
+                    className="w-6 h-6 text-gray-800 ml-1"
+                    aria-hidden="true"
+                  />
                 </button>
               </div>
             </div>

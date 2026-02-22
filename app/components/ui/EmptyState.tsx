@@ -23,6 +23,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
 }) => {
   return (
     <div
+      role="status"
       className={twMerge(
         "flex items-center justify-center min-h-[calc(100vh-80px)]",
         className,
@@ -30,6 +31,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
     >
       <div className="text-center">
         <div
+          aria-hidden="true"
           className={twMerge(
             "w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4",
             iconBgClass,

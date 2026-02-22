@@ -22,9 +22,10 @@ export const CourseDetailHeader: React.FC<CourseDetailHeaderProps> = ({
         <div className="flex items-center gap-3">
           <button
             onClick={onBack}
+            aria-label="Back to courses"
             className="p-1 text-gray-600 cursor-pointer hover:text-gray-900 bg-[#F0F0F0] rounded-full h-[36px] w-[36px] sm:h-[44px] sm:w-[44px] flex items-center justify-center transition-colors shrink-0"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-5 h-5" aria-hidden="true" />
           </button>
           <h1 className="text-lg sm:text-2xl font-medium text-[#202020] truncate">
             {course.title}

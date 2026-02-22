@@ -41,16 +41,28 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-100">
-              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+              <th
+                scope="col"
+                className="text-left text-sm font-semibold text-gray-700 px-6 py-4"
+              >
                 Name
               </th>
-              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+              <th
+                scope="col"
+                className="text-left text-sm font-semibold text-gray-700 px-6 py-4"
+              >
                 City
               </th>
-              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+              <th
+                scope="col"
+                className="text-left text-sm font-semibold text-gray-700 px-6 py-4"
+              >
                 Email Address
               </th>
-              <th className="text-right text-sm font-semibold text-gray-700 px-6 py-4">
+              <th
+                scope="col"
+                className="text-right text-sm font-semibold text-gray-700 px-6 py-4"
+              >
                 Actions
               </th>
             </tr>
@@ -76,8 +88,11 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
                   <span className="text-sm text-gray-600">{learner.email}</span>
                 </td>
                 <td className="pr-13 py-3.5 text-right">
-                  <button className="text-gray-400 hover:text-blue-600 transition-colors">
-                    <MessageSquareText className="w-5 h-5" />
+                  <button
+                    aria-label={`Message ${learner.name}`}
+                    className="text-gray-400 hover:text-blue-600 transition-colors"
+                  >
+                    <MessageSquareText className="w-5 h-5" aria-hidden="true" />
                   </button>
                 </td>
               </tr>
