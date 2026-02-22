@@ -33,7 +33,7 @@ src/
 │ ├── layout.tsx
 │ └── page.tsx
 ├── components/
-│ ├── common/ # Shared components (Header, Footer)
+│ ├── common/ # Shared components (TopBar, PageShell)
 │ ├── sections/ # Page sections from Figma
 │ └── ui/ # Reusable UI components
 ├── hooks/ # Custom hooks
@@ -84,13 +84,13 @@ src/
 - Real API integration with JSONPlaceholder
 - Proper caching and invalidation
 - Component Architecture
-- Reusable UI components (Button, Card, Container)
+- Reusable UI components classified into commons (PageShell, Sidebar), sections (LearnerTable) and ui (Button, Card, Container)
 - Separation of concerns
 - TypeScript interfaces for all props
 
 ### Responsive Design
 
-- Mobile-first approach
+- Responsive design approach (Desktop first based on provided design)
 - Tailwind CSS breakpoints
 - Flexible grid layouts
 
