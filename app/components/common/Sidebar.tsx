@@ -83,7 +83,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
       {/* Navigation */}
       <nav
         aria-label="Main navigation"
-        className="flex-1 px-3 pt-6 border-r border-[#F0F0F0]"
+        className="flex-1 px-3 pt-6 border-r border-[#F0F0F0] overflow-y-auto"
       >
         <ul className="space-y-5">
           {navItems.map((item) => {

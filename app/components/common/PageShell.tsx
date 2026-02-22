@@ -17,14 +17,19 @@ export const PageShell: React.FC<PageShellProps> = ({
   return (
     <div
       className={twMerge(
-        "flex min-h-screen w-full overflow-hidden bg-[#F6F7F6]",
+        "flex h-screen w-full overflow-hidden bg-[#F6F7F6]",
         className,
       )}
     >
       <Sidebar />
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 flex flex-col h-full">
         <TopBar />
-        <main className={twMerge("px-4 sm:px-8 py-4 sm:py-6", mainClassName)}>
+        <main
+          className={twMerge(
+            "flex-1 overflow-y-auto px-4 sm:px-8 py-4 sm:py-6",
+            mainClassName,
+          )}
+        >
           {children}
         </main>
       </div>
