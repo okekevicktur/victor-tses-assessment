@@ -29,52 +29,54 @@ export const LearnerTable: React.FC<LearnerTableProps> = ({
 
   return (
     <div className="bg-[#FDFDFD] rounded-xl border border-gray-100 overflow-hidden">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-gray-100">
-            <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
-              Name
-            </th>
-            <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
-              City
-            </th>
-            <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
-              Email Address
-            </th>
-            <th className="text-right text-sm font-semibold text-gray-700 px-6 py-4">
-              Actions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {learners.map((learner) => (
-            <tr
-              key={learner.id}
-              className="border-b last:border-b-0 border-gray-50 hover:bg-gray-50 transition-colors"
-            >
-              <td className="px-6 py-3.5">
-                <div className="flex items-center gap-3">
-                  <Avatar src={learner.avatar} alt={learner.name} size="sm" />
-                  <span className="text-sm text-gray-900 font-medium">
-                    {learner.name}
-                  </span>
-                </div>
-              </td>
-              <td className="px-6 py-3.5">
-                <span className="text-sm text-gray-600">{learner.city}</span>
-              </td>
-              <td className="px-6 py-3.5">
-                <span className="text-sm text-gray-600">{learner.email}</span>
-              </td>
-              <td className="pr-13 py-3.5 text-right">
-                <button className="text-gray-400 hover:text-blue-600 transition-colors">
-                  <MessageSquareText  className="w-5 h-5" />
-                </button>
-              </td>
+      <div className="overflow-x-auto">
+        <table className="w-full">
+          <thead>
+            <tr className="border-b border-gray-100">
+              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+                Name
+              </th>
+              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+                City
+              </th>
+              <th className="text-left text-sm font-semibold text-gray-700 px-6 py-4">
+                Email Address
+              </th>
+              <th className="text-right text-sm font-semibold text-gray-700 px-6 py-4">
+                Actions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {learners.map((learner) => (
+              <tr
+                key={learner.id}
+                className="border-b last:border-b-0 border-gray-50 hover:bg-gray-50 transition-colors"
+              >
+                <td className="px-6 py-3.5">
+                  <div className="flex items-center gap-3">
+                    <Avatar src={learner.avatar} alt={learner.name} size="sm" />
+                    <span className="text-sm text-gray-900 font-medium">
+                      {learner.name}
+                    </span>
+                  </div>
+                </td>
+                <td className="px-6 py-3.5">
+                  <span className="text-sm text-gray-600">{learner.city}</span>
+                </td>
+                <td className="px-6 py-3.5">
+                  <span className="text-sm text-gray-600">{learner.email}</span>
+                </td>
+                <td className="pr-13 py-3.5 text-right">
+                  <button className="text-gray-400 hover:text-blue-600 transition-colors">
+                    <MessageSquareText className="w-5 h-5" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

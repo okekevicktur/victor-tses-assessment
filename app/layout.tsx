@@ -26,10 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
         <Providers>
-          <div className="max-w-[1860px] mx-auto">{children}</div>
+          <div className="max-w-[1860px] mx-auto min-h-screen">{children}</div>
         </Providers>
       </body>
     </html>

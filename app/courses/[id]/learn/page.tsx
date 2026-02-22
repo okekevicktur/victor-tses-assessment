@@ -78,11 +78,11 @@ export default function CourseLearnPage() {
 
   if (courseLoading || lessonsLoading) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex min-h-screen w-full bg-gray-50">
         <Sidebar />
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <TopBar />
-          <main className="px-8 py-6">
+          <main className="px-4 sm:px-8 py-4 sm:py-6">
             <div className="animate-pulse space-y-6">
               <div className="h-8 bg-gray-200 rounded w-1/3" />
               <div className="h-[300px] bg-gray-200 rounded-xl" />
@@ -95,11 +95,11 @@ export default function CourseLearnPage() {
 
   if (!course) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex min-h-screen w-full bg-gray-50">
         <Sidebar />
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <TopBar />
-          <main className="px-8 py-6">
+          <main className="px-4 sm:px-8 py-4 sm:py-6">
             <p className="text-gray-500">Course not found.</p>
           </main>
         </div>
@@ -108,26 +108,28 @@ export default function CourseLearnPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen w-full bg-gray-50">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <TopBar />
-        <main className="px-8 py-6">
+        <main className="px-4 sm:px-8 py-4 sm:py-6">
           {/* Header */}
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-4 mb-4 sm:mb-6">
             <button
               onClick={() => router.push(`/courses/${courseId}`)}
-              className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[44px] w-[44px] flex items-center justify-center transition-colors"
+              className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[36px] w-[36px] sm:h-[44px] sm:w-[44px] flex items-center justify-center transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-xl font-bold text-gray-900">{course.title}</h1>
+            <h1 className="text-lg sm:text-xl font-bold text-gray-900 truncate">
+              {course.title}
+            </h1>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-col lg:flex-row gap-6">
             <div className="flex-1 min-w-0">
               {/* Video banner — shows for regular lessons, hides for quiz */}
               {!isQuizActive && (
-                <div className="relative rounded-xl overflow-hidden mb-6 h-[450px] bg-gray-800">
+                <div className="relative rounded-xl overflow-hidden mb-4 sm:mb-6 h-[200px] sm:h-[350px] lg:h-[450px] bg-gray-800">
                   <img
                     src={activeLessonImage || course.image}
                     alt={activeLesson?.title || course.title}
@@ -157,7 +159,7 @@ export default function CourseLearnPage() {
             </div>
             {/* Right: lesson sidebar */}
             <LessonSidebar
-              className="self-start"
+              className="self-start w-full lg:w-[300px]"
               sections={mergedSections}
               completedCount={completedLessons}
               totalCount={totalLessons}

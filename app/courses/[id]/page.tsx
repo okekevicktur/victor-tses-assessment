@@ -29,11 +29,11 @@ export default function CourseDetailPage() {
 
   if (courseLoading) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex min-h-screen w-full bg-gray-50">
         <Sidebar />
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <TopBar />
-          <main className="px-8 py-6">
+          <main className="px-4 sm:px-8 py-4 sm:py-6">
             <div className="animate-pulse space-y-6">
               <div className="h-8 bg-gray-200 rounded w-1/3" />
               <div className="h-[200px] bg-gray-200 rounded-xl" />
@@ -50,11 +50,11 @@ export default function CourseDetailPage() {
 
   if (!course) {
     return (
-      <div className="flex min-h-screen bg-[#F6F7F6]">
+      <div className="flex min-h-screen w-full bg-[#F6F7F6]">
         <Sidebar />
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <TopBar />
-          <main className="px-8 py-6">
+          <main className="px-4 sm:px-8 py-4 sm:py-6">
             <p className="text-gray-500">Course not found.</p>
           </main>
         </div>
@@ -63,11 +63,11 @@ export default function CourseDetailPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#F6F7F6]">
+    <div className="flex min-h-screen w-full overflow-hidden bg-[#F6F7F6]">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <TopBar />
-        <main className="px-8 py-6">
+        <main className="px-4 sm:px-8 py-4 sm:py-6">
           {/* Header with back button, title, badge, CTA, and banner */}
           <CourseDetailHeader course={course} onBack={() => router.push("/")} />
 

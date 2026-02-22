@@ -37,7 +37,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <div className="flex items-center justify-between mt-2 p-4">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-2 p-4">
       {/* Page size selector */}
       <div className="relative">
         <select
@@ -53,7 +53,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       {/* Page numbers */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center">
         <button
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
@@ -69,7 +69,7 @@ export const Pagination: React.FC<PaginationProps> = ({
               className="px-2 p-2 justify-center text-sm border border-[#0A60E1] w-8 h-8  flex items-end   text-blue-600 font-semibold rounded-full"
             >
               ...
-            </span> 
+            </span>
           ) : (
             <button
               key={page}

@@ -22,23 +22,23 @@ export default function Home() {
     ) || [];
 
   return (
-    <div className="flex min-h-screen bg-[#F6F7F6]">
+    <div className="flex min-h-screen w-full overflow-hidden bg-[#F6F7F6]">
       {/* Sidebar */}
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         {/* Top Bar */}
         <TopBar />
 
         {/* Page Content */}
-        <main className="px-8 py-6">
+        <main className="px-4 sm:px-8 py-4 sm:py-6">
           {/* Page Header */}
           <div className="mb-6">
-            <h1 className="text-2xl font-medium text-[#202020] mb-1">
+            <h1 className="text-xl sm:text-2xl font-medium text-[#202020] mb-1">
               Course Management
             </h1>
-            <p className="text-sm text-[#636363]">
+            <p className="text-xs sm:text-sm text-[#636363]">
               Create, organize, and assign courses to teams and individuals
             </p>
           </div>

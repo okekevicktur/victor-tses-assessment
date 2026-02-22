@@ -35,7 +35,7 @@ export const LessonSidebar: React.FC<LessonSidebarProps> = ({
 
   return (
     <aside
-      className={`w-[300px] shrink-0 bg-white border-[1.5px] border-[#D9D9D9] pb-[160px]  rounded-xl overflow-hidden ${className || ""}`}
+      className={`w-full lg:w-[300px] shrink-0 bg-white border-[1.5px] border-[#D9D9D9] pb-8 lg:pb-[160px] rounded-xl overflow-hidden ${className || ""}`}
     >
       {/* Header */}
       <div className="px-5 py-2 font-medium border-b-[1.5px] border-[#D9D9D9]">

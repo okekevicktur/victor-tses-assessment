@@ -4,9 +4,9 @@ import { ClipboardCheck } from "lucide-react";
 
 export default function AssessmentsPage() {
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen w-full overflow-hidden bg-gray-50">
       <Sidebar />
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <TopBar />
         <main className="px-8 py-6 flex items-center justify-center min-h-[calc(100vh-80px)]">
           <div className="text-center">
