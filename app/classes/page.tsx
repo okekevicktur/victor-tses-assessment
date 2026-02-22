@@ -6,7 +6,7 @@ export default function ClassesPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-[220px]">
+      <div className="flex-1">
         <TopBar />
         <main className="px-8 py-6 flex items-center justify-center min-h-[calc(100vh-80px)]">
           <div className="text-center">

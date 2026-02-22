@@ -80,7 +80,7 @@ export default function CourseLearnPage() {
     return (
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
-        <div className="flex-1 ml-[220px]">
+        <div className="flex-1">
           <TopBar />
           <main className="px-8 py-6">
             <div className="animate-pulse space-y-6">
@@ -97,7 +97,7 @@ export default function CourseLearnPage() {
     return (
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
-        <div className="flex-1 ml-[220px]">
+        <div className="flex-1">
           <TopBar />
           <main className="px-8 py-6">
             <p className="text-gray-500">Course not found.</p>
@@ -110,7 +110,7 @@ export default function CourseLearnPage() {
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />
-      <div className="flex-1 ml-[220px]">
+      <div className="flex-1">
         <TopBar />
         <main className="px-8 py-6">
           {/* Header */}

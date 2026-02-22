@@ -46,7 +46,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
   return (
     <aside
       className={twMerge(
-        "w-[220px] min-h-screen bg-white flex flex-col pb-6 fixed left-0 top-0 z-30",
+        "w-[220px] min-h-screen bg-white flex flex-col pb-6 sticky left-0 top-0 z-30 h-screen",
         className,
       )}
     >

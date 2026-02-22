@@ -31,7 +31,7 @@ export default function CourseDetailPage() {
     return (
       <div className="flex min-h-screen bg-gray-50">
         <Sidebar />
-        <div className="flex-1 ml-[220px]">
+        <div className="flex-1">
           <TopBar />
           <main className="px-8 py-6">
             <div className="animate-pulse space-y-6">
@@ -52,7 +52,7 @@ export default function CourseDetailPage() {
     return (
       <div className="flex min-h-screen bg-[#F6F7F6]">
         <Sidebar />
-        <div className="flex-1 ml-[220px]">
+        <div className="flex-1">
           <TopBar />
           <main className="px-8 py-6">
             <p className="text-gray-500">Course not found.</p>
@@ -65,7 +65,7 @@ export default function CourseDetailPage() {
   return (
     <div className="flex min-h-screen bg-[#F6F7F6]">
       <Sidebar />
-      <div className="flex-1 ml-[220px]">
+      <div className="flex-1">
         <TopBar />
         <main className="px-8 py-6">
           {/* Header with back button, title, badge, CTA, and banner */}
@@ -95,16 +95,15 @@ export default function CourseDetailPage() {
               learners={learners || []}
               isLoading={learnersLoading}
             />
-        
-
-          {/* Pagination */}
-          <Pagination
-            currentPage={currentPage}
-            totalPages={24}
-            pageSize={pageSize}
-            onPageChange={setCurrentPage}
-            onPageSizeChange={setPageSize}
-          />  </div>
+            {/* Pagination */}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={24}
+              pageSize={pageSize}
+              onPageChange={setCurrentPage}
+              onPageSizeChange={setPageSize}
+            />{" "}
+          </div>
         </main>
       </div>
     </div>

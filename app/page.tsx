@@ -27,7 +27,7 @@ export default function Home() {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1 ml-[220px]">
+      <div className="flex-1">
         {/* Top Bar */}
         <TopBar />
 
