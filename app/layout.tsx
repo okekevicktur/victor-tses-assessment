@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://soludesk-platform-by-victor.vercel.app"),
   title: {
     default: "Soludesk - Professional Skills Platform",
     template: "%s | Soludesk",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://soludesk-platform.vercel.app",
+    url: "https://soludesk-platform-by-victor.vercel.app",
     siteName: "Soludesk",
     title: "Soludesk - Professional Skills Training Platform",
     description:
@@ -55,7 +56,6 @@ export const metadata: Metadata = {
     creator: "@soludesk",
     images: ["/images/thumbnail.png"],
   },
- 
 };
 
 export default function RootLayout({

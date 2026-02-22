@@ -2,7 +2,7 @@
 
 ## Live Demo
 
-[Add your Vercel URL here]
+https://soludesk-platform-by-victor.vercel.app/
 
 ## Project Overview
 
@@ -97,7 +97,7 @@ src/
 ## Deployment
 
 The application is deployed on Vercel:
-[Live Demo URL]
+https://soludesk-platform-by-victor.vercel.app/
 
 License
 This project is created for assessment purposes.
