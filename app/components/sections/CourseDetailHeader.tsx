@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { useSelector } from "react-redux";
+import type { RootState } from "@/app/store/store";
+import { ArrowLeft, Lock } from "lucide-react";
 import { Badge } from "../ui/Badge";
 import type { Course } from "@/app/types";
 
@@ -15,6 +19,10 @@ export const CourseDetailHeader: React.FC<CourseDetailHeaderProps> = ({
   onBack,
   className,
 }) => {
+  const isAuthenticated = useSelector(
+    (state: RootState) => state.user.isAuthenticated,
+  );
+
   return (
     <div className={className}>
       {/* Title row */}
@@ -34,12 +42,23 @@ export const CourseDetailHeader: React.FC<CourseDetailHeaderProps> = ({
             {course.category}
           </Badge>
         </div>
-        <Link
-          href={`/courses/${course.id}/learn`}
-          className="bg-[#0063EF] hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-sm lg:text-base font-medium transition-colors w-full sm:w-[228px] h-[44px] sm:h-[48px] flex items-center justify-center"
-        >
-          Start Learning
-        </Link>
+        {isAuthenticated ? (
+          <Link
+            href={`/courses/${course.id}/learn`}
+            className="bg-[#0063EF] hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-sm lg:text-base font-medium transition-colors w-full sm:w-[228px] h-[44px] sm:h-[48px] flex items-center justify-center"
+          >
+            Start Learning
+          </Link>
+        ) : (
+          <span
+            aria-disabled="true"
+            title="Please log in to start learning"
+            className="bg-gray-300 text-gray-500 cursor-not-allowed px-6 py-2.5 rounded-lg text-sm lg:text-base font-medium w-full sm:w-[228px] h-[44px] sm:h-[48px] flex items-center justify-center gap-2"
+          >
+            <Lock className="w-4 h-4" aria-hidden="true" />
+            Start Learning
+          </span>
+        )}
       </div>
 
       {/* Banner image */}
