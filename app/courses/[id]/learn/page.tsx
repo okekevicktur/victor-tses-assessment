@@ -124,7 +124,7 @@ export default function CourseLearnPage() {
             <h1 className="text-xl font-bold text-gray-900">{course.title}</h1>
           </div>
           <div className="flex gap-6">
-            <div>
+            <div className="flex-1 min-w-0">
               {/* Video banner — shows for regular lessons, hides for quiz */}
               {!isQuizActive && (
                 <div className="relative rounded-xl overflow-hidden mb-6 h-[450px] bg-gray-800">

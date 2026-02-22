@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Button } from "../ui/Button";
+import { AwardIcon } from "lucide-react";
 
 interface QuizContentProps {
   className?: string;
@@ -120,25 +121,39 @@ export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
 
       {/* Quiz content */}
       {activeTab === "content" ? (
-        <div className="bg-white rounded-xl border border-gray-100 p-6">
-          <h3 className="text-lg font-bold text-gray-900 mb-8">Quiz</h3>
+        <div className="bg-white rounded-xl  prose prose-sm max-w-none border-[1.5px] border-[#D9D9D9]  ">
+          <div className="bg-white  rounded-tl-xl rounded-tr-xl ">
+            <h3 className="text-lg font-bold text-[#202020]  border-b-[1.5px] border-[#D9D9D9] pb-4 p-6">
+              Quiz
+            </h3>
+          </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 p-6">
             {questions.map((q) => (
-              <div key={q.id} className="flex gap-4">
+              <div
+                key={q.id}
+                className="flex gap-4 p-4 rounded-[14px] border-[1.5px] border-[#D9D9D9]"
+              >
                 {/* Number circle */}
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
+                <div className="w-8 h-8 rounded-[10px] bg-[#0A60E1] text-white flex items-center justify-center text-sm font-bold shrink-0 mt-0.5">
                   {q.id}
                 </div>
 
                 <div className="flex-1">
                   {/* Question text */}
-                  <h4 className="text-sm font-semibold text-gray-900 mb-1">
+                  <h4 className="text-sm font-semibold  text-gray-900 mb-3">
                     {q.text}
                   </h4>
-                  <p className="text-xs text-gray-400 mb-4">
-                    {q.type === "multiple" ? "Multiple Choice" : "Short answer"}{" "}
-                    · {q.points} points
+                  <p className="text-xs flex items-center gap-2 text-[#636363]  mb-4">
+                    <span className="border border-black/10 px-2 py-1 rounded-lg text-[#202020]">
+                      {q.type === "multiple"
+                        ? "Multiple Choice"
+                        : "Short answer"}
+                    </span>{" "}
+                    <span className="flex items-center gap-1">
+                      <AwardIcon className="w-4 h-4" />
+                      {q.points} points
+                    </span>
                   </p>
 
                   {q.type === "multiple" && q.options ? (
@@ -181,8 +196,8 @@ export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
           </div>
 
           {/* Submit button */}
-          <div className="flex justify-center mt-10">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white px-10 py-3 rounded-lg text-sm font-semibold">
+          <div className="flex justify-end mr-6 my-10">
+            <Button className="border-blue-600 border-[1.5px] hover:bg-blue-700 w-[228px] h-[48px] cursor-pointer hover:text-white text-blue-600 px-10 py-3 rounded-lg text-base font-semibold">
               Submit
             </Button>
           </div>
