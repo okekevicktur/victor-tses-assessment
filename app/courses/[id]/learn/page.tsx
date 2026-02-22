@@ -24,7 +24,7 @@ export default function CourseLearnPage() {
   const { data: sections, isLoading: lessonsLoading } =
     useGetCourseLessonsQuery(courseId);
 
-  const [activeLessonId, setActiveLessonId] = useState("l1");
+  const [activeLessonId, setActiveLessonId] = useState("32");
   const [completedLessonIds, setCompletedLessonIds] = useState<Set<string>>(
     new Set(),
   );
@@ -60,15 +60,18 @@ export default function CourseLearnPage() {
     0,
   );
 
-  // Determine if the active lesson is a quiz
-  const isQuizActive = useMemo(() => {
-    if (!sections) return false;
+  // Find the active lesson
+  const activeLesson = useMemo(() => {
+    if (!sections) return null;
     for (const section of sections) {
       const lesson = section.lessons.find((l) => l.id === activeLessonId);
-      if (lesson) return lesson.type === "quiz";
+      if (lesson) return lesson;
     }
-    return false;
+    return null;
   }, [sections, activeLessonId]);
+
+  const isQuizActive = activeLesson?.type === "quiz";
+  const activeLessonImage = activeLesson?.image;
 
   // Check if active lesson is already completed
   const isActiveLessonCompleted = completedLessonIds.has(activeLessonId);
@@ -114,44 +117,47 @@ export default function CourseLearnPage() {
           <div className="flex items-center gap-4 mb-6">
             <button
               onClick={() => router.push(`/courses/${courseId}`)}
-              className="p-1 text-gray-600 hover:text-gray-900 transition-colors"
+              className="p-1 text-gray-600 hover:text-gray-900 cursor-pointer bg-[#F0F0F0] rounded-full h-[44px] w-[44px] flex items-center justify-center transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
             </button>
             <h1 className="text-xl font-bold text-gray-900">{course.title}</h1>
           </div>
+          <div className="flex gap-6">
+            <div>
+              {/* Video banner — shows for regular lessons, hides for quiz */}
+              {!isQuizActive && (
+                <div className="relative rounded-xl overflow-hidden mb-6 h-[450px] bg-gray-800">
+                  <img
+                    src={activeLessonImage || course.image}
+                    alt={activeLesson?.title || course.title}
+                    className="w-full h-full object-cover opacity-80"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
+                      <Play className="w-6 h-6 text-gray-800 ml-1" />
+                    </button>
+                  </div>
+                </div>
+              )}
 
-          {/* Video banner — shows for regular lessons, hides for quiz */}
-          {!isQuizActive && (
-            <div className="relative rounded-xl overflow-hidden mb-6 h-[450px] bg-gray-800">
-              <img
-                src={course.image}
-                alt={course.title}
-                className="w-full h-full object-cover opacity-80"
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="w-14 h-14 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-105">
-                  <Play className="w-6 h-6 text-gray-800 ml-1" />
-                </button>
+              {/* Content area */}
+              <div className="flex gap-6">
+                {/* Left: lesson or quiz content */}
+                {isQuizActive ? (
+                  <QuizContent className="flex-1 min-w-0" />
+                ) : (
+                  <LessonContent
+                    className="flex-1 min-w-0"
+                    onMarkComplete={handleMarkComplete}
+                    isCompleted={isActiveLessonCompleted}
+                  />
+                )}
               </div>
             </div>
-          )}
-
-          {/* Content area */}
-          <div className="flex gap-6">
-            {/* Left: lesson or quiz content */}
-            {isQuizActive ? (
-              <QuizContent className="flex-1 min-w-0" />
-            ) : (
-              <LessonContent
-                className="flex-1 min-w-0"
-                onMarkComplete={handleMarkComplete}
-                isCompleted={isActiveLessonCompleted}
-              />
-            )}
-
             {/* Right: lesson sidebar */}
             <LessonSidebar
+              className="self-start"
               sections={mergedSections}
               completedCount={completedLessons}
               totalCount={totalLessons}

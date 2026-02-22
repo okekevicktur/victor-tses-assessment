@@ -27,6 +27,7 @@ export interface Lesson {
   completed: boolean;
   active?: boolean;
   type?: "lesson" | "quiz";
+  image?: string;
 }
 
 export interface LessonSection {

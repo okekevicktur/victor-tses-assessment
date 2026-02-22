@@ -152,34 +152,85 @@ const mockLessonSections: LessonSection[] = [
     id: "s1",
     title: "Introduction",
     lessons: [
-      { id: "l1", title: "Welcome Message", completed: false, active: true },
-      { id: "l2", title: "A Note on Style", completed: false },
-      { id: "l3", title: "What You'll Learn", completed: false },
-      { id: "l4", title: "Meet Your Instructor", completed: false },
+      {
+        id: "l1",
+        title: "Welcome Message",
+        completed: false,
+        active: true,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l2",
+        title: "A Note on Style",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l3",
+        title: "What You'll Learn",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l4",
+        title: "Meet Your Instructor",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
     ],
   },
   {
     id: "s2",
     title: "Setting Up Your Workspace",
     lessons: [
-      { id: "l5", title: "Tools You Need", completed: false },
-      { id: "l6", title: "Environment Setup", completed: false },
+      {
+        id: "l5",
+        title: "Tools You Need",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l6",
+        title: "Environment Setup",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
     ],
   },
   {
     id: "s3",
     title: "Navigating the Course",
     lessons: [
-      { id: "l7", title: "Course Structure", completed: false },
-      { id: "l8", title: "How to Submit Assignments", completed: false },
+      {
+        id: "l7",
+        title: "Course Structure",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l8",
+        title: "How to Submit Assignments",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
     ],
   },
   {
     id: "s4",
     title: "Course Resources",
     lessons: [
-      { id: "l9", title: "Supplementary Materials", completed: false },
-      { id: "l10", title: "Recommended Reading", completed: false },
+      {
+        id: "l9",
+        title: "Supplementary Materials",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
+      {
+        id: "l10",
+        title: "Recommended Reading",
+        completed: false,
+        image: "/images/lessons/lesson1.png",
+      },
     ],
   },
   {

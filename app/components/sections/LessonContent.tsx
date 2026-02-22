@@ -22,9 +22,9 @@ export const LessonContent: React.FC<LessonContentProps> = ({
       <div className="flex gap-6 border-b border-gray-200 mb-6">
         <button
           onClick={() => setActiveTab("content")}
-          className={`pb-3 text-sm font-medium transition-colors relative ${
+          className={`pb-3 cursor-pointer px-5 text-sm font-medium transition-colors relative ${
             activeTab === "content"
-              ? "text-blue-600"
+              ? "text-blue-600 font-semibold text-base"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -35,9 +35,9 @@ export const LessonContent: React.FC<LessonContentProps> = ({
         </button>
         <button
           onClick={() => setActiveTab("reviews")}
-          className={`pb-3 text-sm font-medium transition-colors relative ${
+          className={`pb-3 cursor-pointer px-2 text-sm font-medium transition-colors relative ${
             activeTab === "reviews"
-              ? "text-blue-600"
+              ? "text-blue-600 font-semibold text-base"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
@@ -50,12 +50,14 @@ export const LessonContent: React.FC<LessonContentProps> = ({
 
       {/* Content */}
       {activeTab === "content" ? (
-        <div className="prose prose-sm max-w-none">
-          <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">
+        <div className="prose prose-sm max-w-none rounded-xl border-[1.5px] border-[#D9D9D9] ">
+          <div className="bg-white  rounded-tl-xl rounded-tr-xl ">
+            <h3 className="text-lg font-bold text-[#202020]  border-b border-[#D9D9D9] pb-4 p-6">
               Lesson 1 - Welcome Message
             </h3>
+          </div>
 
+          <div className="p-6 bg-white">
             <p className="text-sm text-gray-600 leading-relaxed mb-4">
               Welcome to &apos;Communicate with Confidence&apos;! In an era
               where the pace of work is ever-increasing and the demands on our
@@ -177,10 +179,10 @@ export const LessonContent: React.FC<LessonContentProps> = ({
           </div>
 
           {/* Mark as complete button */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-end my-8  mr-4">
             {isCompleted ? (
               <Button
-                className="bg-green-600 text-white px-8 py-3 rounded-lg text-sm font-semibold cursor-default opacity-80"
+                className="bg-green-600 text-white px-8 w-[228px] h-[48px] py-3 rounded-lg text-sm font-semibold cursor-default opacity-80"
                 disabled
               >
                 Completed ✓
@@ -188,7 +190,7 @@ export const LessonContent: React.FC<LessonContentProps> = ({
             ) : (
               <Button
                 onClick={onMarkComplete}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-sm font-semibold"
+                className="border-2 border-blue-600 w-[228px] h-[48px] hover:bg-blue-700 hover:text-white cursor-pointer text-blue-600 px-8 py-3 rounded-lg text-sm font-semibold"
               >
                 Mark as complete
               </Button>
@@ -198,8 +200,8 @@ export const LessonContent: React.FC<LessonContentProps> = ({
       ) : (
         <div className="space-y-6">
           {/* Reviews list */}
-          <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-white rounded-xl border-[1.5px] border-[#D9D9D9] p-6">
+            <div className="flex items-center justify-between border-b border-[#D9D9D9] pb-4 mb-6">
               <h3 className="text-lg font-bold text-gray-900">
                 Reviews & Feedback
               </h3>
@@ -372,8 +374,8 @@ export const LessonContent: React.FC<LessonContentProps> = ({
               className="w-full p-4 text-sm text-gray-700 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder:text-gray-400"
               rows={4}
             />
-            <div className="flex justify-end mt-4">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg text-sm font-semibold">
+            <div className="flex justify-end mt-8">
+              <Button className="border-blue-600 border-[1.5px] w-[228px] h-[48px] hover:bg-blue-700 hover:text-white cursor-pointer text-blue-600 e px-6 py-2.5 rounded-lg text-sm font-semibold">
                 Submit Review
               </Button>
             </div>
