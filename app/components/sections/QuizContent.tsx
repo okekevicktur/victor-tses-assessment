@@ -93,7 +93,7 @@ export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
       <div className="flex gap-6 border-b border-gray-200 mb-6">
         <button
           onClick={() => setActiveTab("content")}
-          className={`pb-3 text-sm font-medium transition-colors relative ${
+          className={`pb-3 cursor-pointer px-5 text-sm font-medium transition-colors relative ${
             activeTab === "content"
               ? "text-blue-600"
               : "text-gray-500 hover:text-gray-700"
@@ -106,9 +106,9 @@ export const QuizContent: React.FC<QuizContentProps> = ({ className }) => {
         </button>
         <button
           onClick={() => setActiveTab("reviews")}
-          className={`pb-3 text-sm font-medium transition-colors relative ${
+          className={`pb-3 cursor-pointer  text-sm font-medium transition-colors relative ${
             activeTab === "reviews"
-              ? "text-blue-600"
+              ? "text-blue-600 px-2"
               : "text-gray-500 hover:text-gray-700"
           }`}
         >
