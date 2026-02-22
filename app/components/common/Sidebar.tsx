@@ -94,7 +94,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ className }) => {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={twMerge(
-                    "flex items-center gap-3 px-3 py-2.5 text-sm font-medium transition-colors",
+                    "flex items-center gap-3 px-3 py-1.5 text-sm font-medium transition-colors",
                     active
                       ? "bg-[#EAF3FF] text-[#0A60E1] border-l-3 font-semibold border-[#0A60E1]"
                       : "text-[#636363] hover:bg-gray-50 hover:text-gray-900",
